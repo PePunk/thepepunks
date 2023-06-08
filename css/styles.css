@@ -88,6 +88,10 @@ body {
     font-size: 40px;
 }
 
+.cookiebanner{
+    align-item: right;
+}
+
 /* Responsive Styles */
 @media screen and (max-width: 768px) {
     .content {
