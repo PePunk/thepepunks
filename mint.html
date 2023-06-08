@@ -1,1 +1,148 @@
 <!DOCTYPE html>
+<html>
+
+<head>
+	<title>Pepunk Minting</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital@1&family=IBM+Plex+Sans:ital,wght@1,400;1,700&family=Poppins&family=Source+Sans+Pro:ital,wght@1,300;1,600&display=swap"
+		rel="stylesheet">
+
+	<style>
+		.logo {
+			width: 50%;
+			max-width: 300px;
+			height: auto;
+			display: block;
+			margin: 0 auto 30px;
+		}
+
+		.minttext {
+			width: 50%;
+			max-width: 300px;
+			height: auto;
+			display: block;
+			margin: 0 auto 30px;
+
+		}
+
+		.up {
+			border: none;
+			background: none;
+			padding: 0;
+		}
+
+		.mintbutton {
+			background-image: url("images/MintUp.png");
+			background-size: cover;
+		}
+
+		#mint {
+
+			border: none;
+			padding: 20px 50px;
+			display: block;
+			margin: 0 auto 30px;
+
+		}
+
+
+		.checkaddress,
+		#wallet-address {
+			font-family: 'IBM Plex Sans', sans-serif;
+			font-size: 20px;
+			font-style: bold;
+		}
+
+		#num-tokens
+		{
+			font-size: auto;
+			text-align: center;
+			width:auto; 
+		}
+	</style>
+</head>
+
+<body>
+	<a href="Index.html" alt="Pepunks Logo"> <img src="images/Logo.png" class="logo"></a>
+
+	<div class="minttext" style="top: 0">
+		
+		<p class="checkaddress">
+			Check your address:
+			<span id="wallet-address"></span>
+		</p>
+		<label class="checkaddress"   for="num-tokens">You can mint only:</label>
+		<input  type="number"  id="num-tokens" min="1" max="1" value="1" readonly><br><br>
+
+		<button class="mintbutton" id="mint" onclick="toggleAnimation()"> </button>
+	</div>
+
+	<script>
+		let isAnimationActive = false;
+
+		function toggleAnimation() {
+			if (isAnimationActive) {
+				document.getElementById("mint").classList.remove("mintbutton-active");
+				document.getElementById("mint").style.backgroundImage = "url('images/MintUp.png')";
+			} else {
+				document.getElementById("mint").classList.add("mintbutton-active");
+				document.getElementById("mint").style.backgroundImage = "url('images/MintDown.png')";
+				setTimeout(() => {
+					document.getElementById("mint").classList.remove("mintbutton-active");
+					document.getElementById("mint").style.backgroundImage = "url('images/MintUp.png')";
+				}, 500); // Timeout duration in milliseconds (e.g., 1000ms = 1 seconds)
+			}
+			isAnimationActive = !isAnimationActive;
+		}
+
+		window.addEventListener('load', async () => {
+			// Check if Web3 is already injected by MetaMask
+			if (window.ethereum) {
+				window.web3 = new Web3(window.ethereum);
+			}
+			// If no MetaMask, display an error message
+			else {
+				console.error("No Ethereum provider detected. Please install MetaMask or use a Web3-enabled browser.");
+				return;
+			}
+
+			// Contract address and ABI
+			const contractAddress = '0xB22257282B1caf00Bbd4FBc95D11a978f7ab8329';
+			const response = await fetch('Abi/ContractABI.json');
+			const contractABI = await response.json();
+
+			// Get the wallet address
+			const accounts = await web3.eth.requestAccounts();
+			const walletAddress = accounts[0];
+			document.getElementById('wallet-address').innerText = walletAddress;
+
+			// Initialize the contract
+			const contract = new web3.eth.Contract(contractABI, contractAddress);
+
+			// Function to mint NFT
+			const mint = async () => {
+				const tokenPrice = web3.utils.toWei('0.1', 'ether');
+
+				try {
+					const result = await contract.methods.mint(1).send({ from: walletAddress, value: 420690000000000 });
+					alert('Pepunk Minted Successfully!');
+				} catch (error) {
+					console.error(error);
+					alert('Failed to mint NFT');
+				}
+			};
+
+			// Event listener for mint button click
+			document.getElementById('mint').addEventListener('click', mint);
+		});
+
+
+	</script>
+</body>
+
+</html>
