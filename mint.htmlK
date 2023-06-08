@@ -78,7 +78,7 @@
 	<div class="minttext" style="top: 0">
 		
 		<p class="checkaddress">
-			Check your address:
+			CHECK YOUR ADDRESS:
 			<span id="wallet-address"></span>
 		</p>
 		<label class="text"   for="num-tokens">You can mint only:</label>
@@ -87,6 +87,9 @@
 		<br><br>
 
 		<button class="mintbutton" id="mint" onclick="toggleAnimation()"> </button>
+		
+		
+		
 	</div>
 
 	<script>
