@@ -31,6 +31,11 @@ body {
     height: auto;
     max-width: 800px;
 }
+.logo2 {
+    width: 100%;
+    height: auto;
+    max-width: 800px;
+}
 
 .green {
     color: #57873d;
