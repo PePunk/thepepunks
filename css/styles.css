@@ -1,6 +1,8 @@
 /* Common Styles */
 h1,
-h2 {
+h2,
+
+{
     margin: 0;
     padding: 0;
 }
@@ -23,6 +25,9 @@ body {
 .start{
     font-family: 'IBM Plex Sans', sans-serif;
     text-align: center;
+    font-size: 20;
+    margin: 0;
+    padding: 0;
 
 }
 
@@ -30,6 +35,16 @@ body {
     width: 100%;
     height: auto;
     max-width: 800px;
+    
+}
+.logo2 {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    display: block;
+    margin: 0;
+    padding: 0;
+    
 }
 
 .green {
@@ -86,6 +101,10 @@ body {
 
 .mintpage{
     font-size: 40px;
+}
+
+.cookiebanner{
+    align-item: right;
 }
 
 /* Responsive Styles */

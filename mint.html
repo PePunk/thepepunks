@@ -7,10 +7,10 @@
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital@1&family=IBM+Plex+Sans:ital,wght@1,400;1,700&family=Poppins&family=Source+Sans+Pro:ital,wght@1,300;1,600&display=swap"
-		rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital@1&family=IBM+Plex+Sans:ital,wght@0,600;1,400;1,700&family=Poppins&display=swap" rel="stylesheet">
+	<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+	
 
 	<style>
 		.logo {
@@ -23,7 +23,7 @@
 
 		.minttext {
 			width: 50%;
-			max-width: 300px;
+			max-width: 500px;
 			height: auto;
 			display: block;
 			margin: 0 auto 30px;
@@ -54,8 +54,29 @@
 		.checkaddress,
 		#wallet-address {
 			font-family: 'IBM Plex Sans', sans-serif;
+			font-size: 30px;
+			font-style: bold;
+		}
+		
+		.text,
+		#wallet-address {
+			font-family: 'IBM Plex Sans', sans-serif;
+			font-size: 25px;
+			font-style: bold;
+		}
+		.text2,
+		#wallet-address {
+			font-family: 'IBM Plex Sans', sans-serif;
 			font-size: 20px;
 			font-style: bold;
+		}
+		
+		.text3,
+		#wallet-address {
+			font-family: 'IBM Plex Sans', sans-serif;
+			font-size: 40px;
+			font-style: bold;
+			position: center;
 		}
 
 		#num-tokens
@@ -72,14 +93,29 @@
 
 	<div class="minttext" style="top: 0">
 		
-		<p class="checkaddress">
-			Check your address:
+		<p class="text3">MINT IS OFF NOW</p>
+		<!-- <p class="checkaddress">
+			CHECK YOUR ADDRESS:
+			<br>
+			<br>
 			<span id="wallet-address"></span>
+			<br>
 		</p>
-		<label class="checkaddress"   for="num-tokens">You can mint only:</label>
-		<input  type="number"  id="num-tokens" min="1" max="1" value="1" readonly><br><br>
-
-		<button class="mintbutton" id="mint" onclick="toggleAnimation()"> </button>
+		<label class="text"   for="num-tokens">You can mint only:</label>
+		<input  type="number"  id="num-tokens" min="1" max="1" value="1" readonly>
+		<a class="text"> per wallet.</a>
+		<br><br>
+		
+		
+		<button class="mintbutton" id="mint" onclick="toggleAnimation()"> </button><br> -->
+		
+		<label class="text">Price 0.0042069eth + gas.</label><br>
+		
+		<a class="text2"> N.B In case you try to mint more than one there is a possibility that you will lose gas fees. <br>
+				There will be no refunds!</a>
+		
+		
+		
 	</div>
 
 	<script>
@@ -112,7 +148,7 @@
 			}
 
 			// Contract address and ABI
-			const contractAddress = '//mettereil contratto';
+			const contractAddress = '0xBcB4C592B6cF036f93516586d4bB3794B217863b';
 			const response = await fetch('Abi/ContractABI.json');
 			const contractABI = await response.json();
 
@@ -129,7 +165,7 @@
 				const tokenPrice = web3.utils.toWei('0.1', 'ether');
 
 				try {
-					const result = await contract.methods.mint(1).send({ from: walletAddress, value: 357000000000000 });
+					const result = await contract.methods.mint(1).send({ from: walletAddress, value: 4206900000000000 });
 					alert('Pepunk Minted Successfully!');
 				} catch (error) {
 					console.error(error);
