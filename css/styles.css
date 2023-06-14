@@ -69,12 +69,11 @@ body {
 
 .logogm {
     width: 20%;
-    margin-top: 50px;
     height: auto;
     max-width: 150px;
     float: left;
-    border-style: solid;
-    border-color: #57873d;
+    margin-top: 50px;
+    
     
 }
 .logogn {
@@ -83,8 +82,7 @@ body {
     max-width: 150px;
     float: right;
     margin-top: 50px;
-    border-style: solid;
-    border-color: #57873d;
+   
 }
 
 
