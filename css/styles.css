@@ -35,26 +35,56 @@ body {
 }
 
 .logo {
-    width: 100%;
+    width: 50%;
     height: auto;
     max-width: 800px;
-    float: center;
+    clear:both;
+       
+    
+    
+
+}
+.twittertop{
+    float: right;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    height: auto;
+    max-width: 50px;
+    margin-top: 20px;
+    margin-right: 50px;
+
+}
+
+.sneeky {
+    width: 100%;
+    height: auto;
+    max-width: 2000px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 
 }
 
 .logogm {
-    width: 100%;
+    width: 20%;
     margin-top: 50px;
     height: auto;
-    max-width: 200px;
+    max-width: 150px;
     float: left;
+    border-style: solid;
+    border-color: #57873d;
+    
 }
 .logogn {
-    width: 100%;
+    width: 20%;
     height: auto;
-    max-width: 200px;
+    max-width: 150px;
     float: right;
     margin-top: 50px;
+    border-style: solid;
+    border-color: #57873d;
 }
 
 
